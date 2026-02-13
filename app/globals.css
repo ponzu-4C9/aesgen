@@ -68,6 +68,7 @@
 
 .examples {
     padding: 0;
+    padding-left: 20px;
     margin-bottom: 12px; /* 例文ブロックごとの間隔 */
 }
 

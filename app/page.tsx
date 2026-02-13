@@ -4,6 +4,20 @@ import Inputbox from './components/Inputbox';
 import { json } from "stream/consumers";
 
 
+function MeaningText({ result }: { result: string }) {
+  const [isVisible, setIsVisible] = useState(false);
+  function toggleVisibility() {
+    setIsVisible(!isVisible);
+  }
+  return (
+    <p><strong>  Meaning:</strong>{" "}
+      <span onClick={toggleVisibility}>
+        {isVisible ? result : "■".repeat(result.length) + "←Click to show"}
+      </span>
+    </p>
+  )
+}
+
 function Viewexample({ result }: { result: string }) {
   let fr: any = null;
   try {
@@ -29,8 +43,8 @@ function Viewexample({ result }: { result: string }) {
           <h2>{wordObj.word} : {wordObj.meaning}</h2>
           {wordObj.examples.map((ex: any, index: number) => (
             <div key={index} className="examples">
-              <h3><strong>Example {index + 1}:</strong> {ex.example}</h3>
-              <p><strong>Meaning:</strong> {ex.meaning}</p>
+              <h3><strong>  Example {index + 1}:</strong> {ex.example}</h3>
+              <MeaningText result={ex.meaning} />
             </div>
           ))}
         </div>
