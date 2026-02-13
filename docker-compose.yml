@@ -1,0 +1,25 @@
+
+services:
+  app:
+    build: .
+    container_name: nextjs-dev
+    ports:
+      - "80:3000"
+    environment:
+      - NODE_ENV=development
+  
+  ollama:
+    image: ollama/ollama:latest
+    container_name: ollama
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - driver: nvidia
+              count: 1
+              capabilities: [gpu]
+    volumes:
+      - ./ollama_data:/root/.ollama
+    ports:
+      - "11434:11434"
+    restart: always
