@@ -1,8 +1,7 @@
 "use client";
 import { useState } from "react";
-import Inputbox from './components/Inputbox';
-import { json } from "stream/consumers";
-import Viewexample from './components/Viewexample';
+import Inputbox from "@/app/components/Inputbox";
+import Viewexample from "@/app/components/Viewexample";
 
 
 

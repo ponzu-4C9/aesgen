@@ -1,0 +1,52 @@
+"use client";
+import { useState } from "react";
+
+
+function MeaningText({ result }: { result: string }) {
+    const [isVisible, setIsVisible] = useState(false);
+    function toggleVisibility() {
+        setIsVisible(!isVisible);
+    }
+    return (
+        <p><strong>  Meaning:</strong>{" "}
+            <span onClick={toggleVisibility}>
+                {isVisible ? result : "■".repeat(result.length) + "←Click to show"}
+            </span>
+        </p>
+    )
+}
+
+export default function Viewexample({ result }: { result: string }) {
+    let fr: any = null;
+    try {
+        const jsonMatch = result.match(/({[\s\S]*})/);
+        if (jsonMatch === null) {
+            throw new Error("JSON形式のデータが見つかりませんでした");
+        }
+        fr = JSON.parse(jsonMatch[0]);
+        console.log(fr);
+    } catch (error) {
+        console.error("JSONの解析に失敗しました", error);
+        return (
+            <div className='viewexample'>
+                <p>error</p>
+            </div>
+        )
+    }
+
+    return (
+        <div className='viewexample'>
+            {fr.words.map((wordObj: any, index: number) => (
+                <div key={wordObj.word} className="word-section">
+                    <h2>{wordObj.word} : {wordObj.meaning}</h2>
+                    {wordObj.examples.map((ex: any, index: number) => (
+                        <div key={index} className="examples">
+                            <h3>{ex.example}</h3>
+                            <MeaningText result={ex.meaning} />
+                        </div>
+                    ))}
+                </div>
+            ))}
+        </div>
+    );
+}

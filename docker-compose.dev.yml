@@ -1,0 +1,34 @@
+
+services:
+  app:
+    # 現在のディレクトリにあるDockerfileを使ってビルドする
+    build: .
+    # コンテナの名前（任意）
+    container_name: nextjs-dev
+    # ポート転送（ホストの3000番 → コンテナの3000番）
+    ports:
+      - "3000:3000"
+    # ボリュームマウント（ここが重要！）
+    # ホストの現在のディレクトリ(.) を コンテナの /app に同期させる
+    volumes:
+      - .:/app
+      - /app/node_modules # node_modulesはホスト側で上書きしないように退避（重要テクニック）
+    # 環境変数など
+    environment:
+      - NODE_ENV=development
+  
+  ollama:
+    image: ollama/ollama:latest
+    container_name: ollama
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - driver: nvidia
+              count: 1
+              capabilities: [gpu]
+    volumes:
+      - ./ollama_data:/root/.ollama
+    ports:
+      - "11434:11434"
+    restart: always
