@@ -10,7 +10,7 @@ export default function MyApp() {
   const [result, setResult] = useState("");
   return (
     <div>
-      <h1>Automatic Example Sentence GENerator</h1>
+      <h1 className="daimei">Automatic Example Sentence GENerator</h1>
       <div className='contents'>
         <Inputbox setResult={setResult} />
         <Viewexample result={result} />

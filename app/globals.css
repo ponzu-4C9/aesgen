@@ -1,4 +1,9 @@
 
+.daimei{
+    font-size: 36px;
+    margin: 24px 0;
+    border-bottom: 1px solid #f0f0f0;
+}
 .contents {
     display: flex;
     width: 100vw;
@@ -30,6 +35,9 @@
     resize: none;
     border:black 1px solid;
     transition: box-shadow 0.3s cubic-bezier(0.4,0,0.2,1);
+}
+.input-textarea:hover{
+    box-shadow: 0 0 12px gray;
 }
 .input-textarea:focus {
     outline: none;
@@ -75,4 +83,12 @@
 .examples h3,
 .examples p {
     margin: 0;
+}
+.word-section{
+    padding: 12px;
+    border-bottom: 1px solid #ccc;
+    transition: box-shadow 0.3s ease;
+}
+.word-section:hover {
+    box-shadow: 0 0 12px #f0f0f0;
 }
