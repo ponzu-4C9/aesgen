@@ -3,7 +3,7 @@ import generateText from "@/app/components/thorwAI";
 import { useState } from "react";
 
 export default function Inputbox({ setResult }: { setResult: (result: string) => void }) {
-    const [value, setValue] = useState("");
+    const [value, setValue] = useState("follow\nconsider");
     const [exampleCount, setExampleCount] = useState(1);
 
     // 改行で分割し、空行を除去して配列化する例
