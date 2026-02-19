@@ -6,23 +6,16 @@
 }
 .contents {
     display: flex;
-    width: 100vw;
-    min-height: 80vh;
 }
 
 .input-container{
 }
 
 .viewexample{
-    flex: 1;
     min-width: 0;
     flex-direction: column;
     padding: 24px;
     box-sizing: border-box;
-}
-
-.input-container{
-    flex: 1;
 }
 
 .textarea-container {
