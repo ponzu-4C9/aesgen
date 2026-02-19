@@ -1,0 +1,8 @@
+node_modules
+.next
+ollama_data
+.git
+.gitignore
+README.md
+docker-compose*.yml
+Dockerfile
